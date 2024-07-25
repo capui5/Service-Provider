@@ -1,0 +1,99 @@
+<mvc:View controllerName="com.sadara.ServiceProvider.controller.ServiceProvider" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:m="sap.m" height="100%">
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Service Provider" wrapping="true"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Title text="Service Provider" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<actions>
+					<m:Button text="Edit" type="Emphasized"/>
+					<m:Button type="Transparent" text="Delete"/>
+					<m:Button type="Transparent" text="Copy"/>
+				
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onGoPress" filterChange=".onFilterChange"
+				afterVariantLoad=".onAfterVariantLoad">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem name="Name" label="Service Provider" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input id="articleMultiInput1" showValueHelp="true" valueHelpRequest="onValueHelpArticle"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="Customer No" label="Service" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input id="articleMultiInput" showValueHelp="true" valueHelpRequest="onValueHelpArticle"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="Begin Date" label="Max Rows" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input id="productInput" placeholder="Enter the no of Rows"></m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</headerContent>
+		<sections>
+			<ObjectPageSection>
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<m:Table id="productsTable" mode="SingleSelectMaster" itemPress="handleItemPress" inset="false" items="{list>/data}"
+								class="sapFDynamicPageAlignContent" width="auto">
+								<m:headerToolbar>
+									<m:OverflowToolbar>
+										<m:Button text="Add Line" press="onpress"/>
+										<m:Button text="Details" press="onpress"/>
+										<m:Button text="Copy Line" press="onpress"/>
+										<m:Button text="Undo Changes" press="onpress"/>
+										<m:ToolbarSpacer/>
+										<m:OverflowToolbarButton icon="sap-icon://excel-attachment" type="Transparent" press="onSort"/>
+										<m:Button press="onExport"/>
+									</m:OverflowToolbar>
+								</m:headerToolbar>
+								<m:columns>
+									<m:Column width="12em">
+										<m:Text text="Service Provider"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+										<m:Text text="Service"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="Created By"/>
+									</m:Column>
+									<m:Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+										<m:Text text="Created On"/>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:Text text="Modified By"/>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:Text text="Modified On"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem type="Navigation">
+										<m:cells>
+											<m:ObjectIdentifier title="{list>product}" text="{list>ProductId}"/>
+											<m:ObjectNumber
+												number="{parts: [{path:'list>price'},{path:'list>CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false}}"
+												unit="{list>CurrencyCode}"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>
