@@ -5,8 +5,7 @@ sap.ui.define([
 
 	return Controller.extend("com.sadara.ServiceProvider.controller.Home", {
 		onInit: function () {
-			// const myUniversallyUniqueID = globalThis.crypto.randomUUID();
-			// console.log(myUniversallyUniqueID);
+
 		},
 		onServiceProviderPress: function () {
 			var oRouter = this.getOwnerComponent().getRouter();
@@ -20,5 +19,6 @@ sap.ui.define([
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.navTo("ServiceProviderDetails");
 		}
+
 	});
 });
