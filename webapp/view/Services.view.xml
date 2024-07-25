@@ -1,0 +1,85 @@
+<mvc:View controllerName="com.sadara.ServiceProvider.controller.Services" displayBlock="true" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar">
+	<App>
+		<Page title="Service">
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<!--<Button text="Details" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>-->
+					<!--<Button text="Copy line" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>-->
+					<!--<Button text="Delete" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>-->
+					<!--<Button text="Undo Changes" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>-->
+				</content>
+			</OverflowToolbar >
+			<content>
+				<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onGoPress" filterChange=".onFilterChange"
+					afterVariantLoad=".onAfterVariantLoad">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem name="Customer No" label="Service" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input id="articleMultiInput" showValueHelp="true" valueHelpRequest="onValueHelpArticle"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem name="Begin Date" label="Max Rows" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<Input id="productInput" placeholder="Enter the no of Rows"></Input>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</content>
+			<Table id="idProductsTable" mode="SingleSelect" inset="false" items="{MYMODEL>/ProductCollection}" sticky="ColumnHeaders,HeaderToolbar"
+				selectionChange="onSelectionChange">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Button text="Add line" press="onAddLine" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>
+							<Button id="details" text="Details" press="onAddLine" ariaDescribedBy="defaultButtonDescription genericButtonDescription" enabled="false"></Button>
+							<Button id="copyline" text="Copy line" press="onPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription" enabled="false"></Button>
+							<Button id="delete" text="Delete" press="OnDelete" ariaDescribedBy="defaultButtonDescription genericButtonDescription" enabled="false"></Button>
+							<Button text="Undo Changes" press="onUndoChanges" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>
+							<Button text="Update" press="onUpdate" ariaDescribedBy="defaultButtonDescription genericButtonDescription"></Button>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://excel-attachment" press="onExport"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Service"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+						<Text text="Created By"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+						<Text text="Created On"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="Modified By"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="Modified On"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Input id="articleMultiInput3" value="{MYMODEL>MainCategory}" editable="{MYMODEL>editable}" showValueHelp="true"
+								valueHelpRequest="onValueHelpArticle"/>
+							<Input id="name2" value="{MYMODEL>SupplierName}" editable="{MYMODEL>editable}"></Input>
+							<Input id="name3" value="{MYMODEL>Description}" editable="{MYMODEL>editable}"></Input>
+							<Input id="name4" value="{MYMODEL>Status}" editable="{MYMODEL>editable}"></Input>
+							<Input id="name5" value="{MYMODEL>CurrencyCode}" editable="{MYMODEL>editable}"></Input>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<footer>
+				<OverflowToolbar id="otbFooter">
+					<ToolbarSpacer/>
+					<Button type="Default" text="SAVE" press="onSave"></Button>
+				</OverflowToolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

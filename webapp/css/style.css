@@ -1,0 +1,11 @@
+.hero-container {
+    background-image: url('/webapp/Images/Sadaara.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+}

@@ -1,0 +1,127 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "com.sadara.ServiceProvider",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "com.sadara.ServiceProvider.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sadara.ServiceProvider.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.sadara.ServiceProvider.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "Home",
+				"pattern": ":?query:",
+				"target": ["Home"]
+			}, {
+				"name": "Services",
+				"pattern": "Services",
+				"target": ["Services"]
+			},
+			 {
+				"name": "ServiceProvider",
+				"pattern": "ServiceProvider",
+				"target": ["ServiceProvider"]
+			},
+			 {
+				"name": "ServiceProviderDetails",
+				"pattern": "ServiceProviderDetails",
+				"target": ["ServiceProviderDetails"]
+			}],
+			"targets": {
+				"Home": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Home",
+					"viewName": "Home"
+				},
+				"Services": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Services",
+					"viewName": "Services"
+				},
+				"ServiceProvider": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "ServiceProvider",
+					"viewName": "ServiceProvider"
+				},
+				"ServiceProviderDetails": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "ServiceProviderDetails",
+					"viewName": "ServiceProviderDetails"
+				}
+			}
+		}
+	}
+}
